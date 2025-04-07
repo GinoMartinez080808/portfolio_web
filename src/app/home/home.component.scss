@@ -1,0 +1,57 @@
+
+header{
+    height: 5vh;
+    width: 100%;
+    background-color: #E0E0E0;
+    
+}
+main{
+    
+    height: 95vh;
+    width: 100%;
+    overflow:auto;
+}
+footer{
+    height: 10vh;
+    width: 100%;
+    background-color: #E0E0E0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#presentacion{
+    height: 40vh;
+    width: 100%;
+    color: #E0E0E0;
+}
+#Skills{
+    height: 40vh;
+    width: 100%;
+}
+#Projects{
+    height: 40vh;
+    width: 100%;
+}
+#contacto1{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;    
+}
+#contacto2{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;    
+}       
+h1 h2 {
+    color: #283C63;
+}
+h3 h4 h5 h6 p {
+    color: #E0E0E0;
+}
