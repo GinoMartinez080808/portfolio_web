@@ -1,0 +1,19 @@
+h1 { font-family: monospace; }
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: #C3D4FF;
+}
+h1 {
+  font-size: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid black;
+  width: fit-content;
+  padding-right: 5px;
+  color: #C3D4FF;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}

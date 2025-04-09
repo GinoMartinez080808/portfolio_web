@@ -2,7 +2,7 @@
 header{
     height: 5vh;
     width: 100%;
-    background-color: #E0E0E0;
+    background-color: #283C63 !important;
     
 }
 main{
@@ -14,7 +14,7 @@ main{
 footer{
     height: 10vh;
     width: 100%;
-    background-color: #E0E0E0;
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +23,10 @@ footer{
 #presentacion{
     height: 40vh;
     width: 100%;
-    color: #E0E0E0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
 }
 #Skills{
     height: 40vh;
@@ -49,9 +52,30 @@ footer{
     justify-content: center;
     align-items: center;    
 }       
-h1 h2 {
-    color: #283C63;
+#typewriter{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-h3 h4 h5 h6 p {
-    color: #E0E0E0;
+#imagen{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+* {
+  font-family: monospace !important;
+}
+h1,h2 {
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  
+  color: #C3D4FF !important;
+}
+h3,h4,h5,h6,p {
+    color: #E0E0E0 !important;
 }

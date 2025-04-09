@@ -2,12 +2,14 @@
 /*Gris oscuro (#333333) como fondo principal
 Azul marino (#283C63) para los títulos y botones
 Gris claro (#E0E0E0) para el texto y los detalles
-Azul claro (#A9C6FA) para acentos sutiles Puede usarse en iconos o líneas divisorias */
+Azul claro (#A9C6FA) para acentos sutiles Puede usarse en iconos o líneas divisorias 
+#C3D4FF para un fondo suave en secciones específicas
+*/
 body{
     height: 100vh;
     width: 100%;
     margin: 0;
-    background-color: #333333;
+    background-color: #333333 !important;
 } 
 
 h1{
@@ -15,4 +17,7 @@ h1{
 }
 html{
     margin: 0;
+}
+.important{
+    color: #C3D4FF !important;
 }
