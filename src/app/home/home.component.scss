@@ -16,6 +16,7 @@ main {
     --sb-track-color: #232E33;
     --sb-thumb-color: #283C63;
     --sb-size: 14px;
+    scroll-behavior: smooth;
   }
   
   main::-webkit-scrollbar {

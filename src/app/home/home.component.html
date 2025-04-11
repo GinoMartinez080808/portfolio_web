@@ -66,13 +66,13 @@
 </main>
 
 <!-- ✅ Botón scroll fuera del main -->
- 
-<button 
+<button
+  
   class="scroll-top-btn"
-  [class.fade-in]="showScrollButton()"
+  [ngClass]="{ 'fade-in': showScrollButtonValue() }"
   (click)="scrollToTop()">
   ⬆
-</button>
+</button> 
  
 
  

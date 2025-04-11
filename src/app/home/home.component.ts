@@ -8,8 +8,13 @@ import {
   ElementRef,
   ViewChild,
   Injector,
+  OnDestroy,
+  OnInit,
+  DestroyRef,
+  effect
 } from '@angular/core';
-import { NgFor} from '@angular/common';
+
+import { NgFor, NgIf, NgClass} from '@angular/common';
 import { TypewriterComponent } from '../components/typewriter/typewriter.component';
 
 
@@ -17,7 +22,7 @@ import { TypewriterComponent } from '../components/typewriter/typewriter.compone
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TypewriterComponent, NgFor],
+  imports: [TypewriterComponent, NgFor,NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -55,7 +60,9 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('proyectosRef') proyectosRef!: ElementRef;
   scrollToProyectos() {
     this.proyectosRef.nativeElement.scrollIntoView({ behavior: 'smooth' });
-  } 
+  }  
+
+  // Señales
   showScrollButton: WritableSignal<boolean> = signal(false);
 
   @ViewChild('scrollContainer') scrollContainer!: ElementRef<HTMLElement>;
@@ -63,22 +70,15 @@ export class HomeComponent implements AfterViewInit {
   private injector = inject(Injector);
 
   ngAfterViewInit(): void {
-    const el = this.scrollContainer?.nativeElement;
-  
-  
-    if (!el) {
-      console.warn('Scroll container no está disponible');
-      return;
-    }
-  
+    const el = this.scrollContainer.nativeElement;
+    // Agregar el evento de scroll al contenedor
     el.addEventListener('scroll', () => {
       const scrollTop = el.scrollTop;
-      console.log('Scrolling. Top:', scrollTop);
-  
       runInInjectionContext(this.injector, () => {
         this.showScrollButton.set(scrollTop > 300);
       });
     });
+    
   }
 
   scrollToTop() {
@@ -86,13 +86,13 @@ export class HomeComponent implements AfterViewInit {
       top: 0,
       behavior: 'smooth'
     });
-    console.log(this.scrollContainer.nativeElement.scrollTop);
+    
   }
 
   showScrollButtonValue() {
-    console.log(this.showScrollButton());
+ 
+
     return this.showScrollButton();
-    
   }
 }
   
