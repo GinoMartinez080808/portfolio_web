@@ -1,4 +1,5 @@
-import { Injectable, Signal, signal } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, Signal, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class TypewritersService {
@@ -11,8 +12,12 @@ export class TypewritersService {
 
   displayText: Signal<string> = this.text;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   start(phrases: string[], speed = 80, pause = 1000) {
+    if (!isPlatformBrowser(this.platformId)) return; // ⛔️ No ejecutar en SSR
     if (this.typing || phrases.length === 0) return;
+
     this.typing = true;
     this.phrases = phrases;
 
@@ -36,7 +41,7 @@ export class TypewritersService {
 
       setTimeout(type, delay);
     };
- 
+
     type(); // inicia el bucle
   }
 }

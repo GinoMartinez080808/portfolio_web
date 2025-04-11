@@ -1,45 +1,78 @@
+<header>
+</header>
 
-    <header>
-
-    </header>
-
-<main>
-    <div id="presentacion" class="container text-center bg-dark mt-5 mb-5 rounded p-5 shadow">
-       <div id="typewriter">
+<main #scrollContainer>
+  <div id="presentacion" class="section container text-center bg-dark mt-5 mb-5 rounded p-5 sh shadow">
+    <div id="typewriter">
+      <section class="hero text-center">
         <app-typewriter></app-typewriter>
-       </div>
-       <div id="imagen">
-          <img src="" alt="" class="img-fluid rounded shadow">
-       </div>
-           
-     
-    
+      </section>
+    </div>
+    <div id="imagen">
+      <section class="sobre-mi mt-5">
+        <h2>Sobre mí</h2>
+        <p>
+          Soy un apasionado por el desarrollo web, con experiencia en tecnologías modernas como Angular, React, Vue,
+          TypeScript, y SCSS. Me encanta crear interfaces atractivas y funcionales.
+        </p>
+        <button class="btn btn-primary btn-lg mt-3" (click)="scrollToProyectos()">Ver proyectos</button>
+      </section>
+    </div>
+  </div>
 
-        <!--  -->
-        
+  <section id="Skills" class="section container text-center bg-dark mt-5 mb-5 rounded p-5 shadow sh">
+    <h1>Skills</h1>
+    <div class="d-flex flex-wrap gap-2">
+      <span class="badge bg-primary">Angular</span>
+      <span class="badge bg-success">React</span>
+      <span class="badge bg-warning text-dark">Vue</span>
+      <span class="badge bg-dark">TypeScript</span>
+      <span class="badge bg-secondary">SCSS</span>
+      <span class="badge bg-info text-dark">Bootstrap</span>
+      <span class="badge bg-danger">Ionic</span>
     </div>
-    <div id="Skills" class="container text-center bg-dark mt-5 mb-5 rounded p-5 shadow">
-        <h1>Skills</h1>
-    </div>
-    <div id="Projects" class="container text-center bg-dark mt-5 mb-5 rounded p-5 shadow">
-        <h1>Proyects</h1>
+  </section>
 
+  <section id="Projects" #proyectosRef class="section container text-center bg-dark mt-5 mb-5 rounded p-5 sh shadow">
+    <h1>Proyects</h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-3">
+      <div class="col" *ngFor="let proyecto of proyectos">
+        <div class="card h-100 picture">
+          <img [src]="proyecto.imagen" class="card-img-top" [alt]="proyecto.nombre" />
+          <div class="card-body">
+            <h5 class="card-title">{{ proyecto.nombre }}</h5>
+            <p class="card-text">{{ proyecto.descripcion }}</p>
+            <div class="mb-2">
+              <span class="badge me-1" *ngFor="let tech of proyecto.tecnologias">{{ tech }}</span>
+            </div>
+            <a [href]="proyecto.enlaces.demo" class="btn btn-outline-primary btn-sm me-2" target="_blank">Demo</a>
+            <a [href]="proyecto.enlaces.github" class="btn btn-outline-dark btn-sm" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    
-    <footer class="shadow bg-dark">
-        <div id="contacto1">
-            <h1>Contact me: </h1>
-        </div>
-        
-      
-        <div id="contacto2">
-            <p>My email is: {{email}}</p>
-            <p>My phone number is: {{phone}}</p>
-            <p>My address is: {{address}}</p>
-        </div>
-        
-        
-   
-    </footer>
+  </section>
+
+  <footer class="sh shadow bg-dark">
+    <div id="contacto1">
+      <h1>Contact me: </h1>
+    </div>
+    <div id="contacto2">
+      <p>My email is: {{ email }}</p>
+      <p>My phone number is: {{ phone }}</p>
+      <p>My address is: {{ address }}</p>
+    </div>
+  </footer>
 </main>
+
+<!-- ✅ Botón scroll fuera del main -->
+ 
+<button 
+  class="scroll-top-btn"
+  [class.fade-in]="showScrollButton()"
+  (click)="scrollToTop()">
+  ⬆
+</button>
+ 
+
+ 

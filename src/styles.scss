@@ -10,8 +10,14 @@ body{
     width: 100%;
     margin: 0;
     background-color: #333333 !important;
+    --sb-track-color: #232E33;
+    --sb-thumb-color: #283C63;
+    --sb-size: 14px;
 } 
-
+html {
+    scroll-behavior: smooth;
+  }
+  
 h1{
     font-size: 2.5rem;
 }
@@ -21,3 +27,25 @@ html{
 .important{
     color: #C3D4FF !important;
 }
+
+  body::-webkit-scrollbar {
+    width: var(--sb-size)
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px; 
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+    
+  }
+  
+  @supports not selector(::-webkit-scrollbar) {
+    body {
+      scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
+  }
