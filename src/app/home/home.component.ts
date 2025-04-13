@@ -14,15 +14,17 @@ import {
   effect,
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
+import emailjs from '@emailjs/browser';
 
+import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf, NgClass} from '@angular/common';
 import { TypewriterComponent } from '../components/typewriter/typewriter.component';
 
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home', 
   standalone: true,
-  imports: [TypewriterComponent, NgFor,NgClass, NgIf],
+  imports: [TypewriterComponent, NgFor,NgClass, NgIf,FormsModule], 
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -112,5 +114,52 @@ export class HomeComponent implements AfterViewInit {
   checkScreenSize() {
     this.isVisible = window.innerWidth > 1198; 
   }
+
+
+  formData = {
+    name: '',
+    email: '',
+    message: ''
+  }
+   loading = false;
+  openModal() {
+    const modal = new (window as any).bootstrap.Modal(document.getElementById('contactModal')!);
+    modal.show();
+  }
+
+  closeModal() {
+    const modalEl = document.getElementById('contactModal');
+    const modalInstance = (window as any).bootstrap.Modal.getInstance(modalEl);
+    modalInstance.hide();
+  }
+
+  onSubmit() {
+    this.loading = true;
+
+    const serviceID = 'service_aasdasdasdas';
+    const templateID = "template_b4gjzee";
+    const publicKey = 'aOEllL7YXBQ_t3GZT';
+
+    emailjs.send(serviceID, templateID, this.formData, publicKey)
+      .then(() => {
+     //   alert('Correo enviado con éxito');
+        this.resetForm();
+      })
+      .catch((err) => {
+       // alert('Error al enviar el correo: ' + err.text);
+        this.loading = false;
+      });
+  
+    this.closeModal();
+    this.formData = { name: '', email: '', message: '' };
+  }
+  resetForm() {
+    this.loading = false;
+    this.closeModal();
+    this.formData = { name: '', email: '', message: '' };
+  }
+  
 }
+
+
   

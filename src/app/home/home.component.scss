@@ -296,7 +296,7 @@ h3,h4,h5,h6,p {
     border-radius: 1rem !important;
   }
   .logo {
-    width: 100%;
+    width: 50%;
     height: 100%;
     border-radius: 50%;
     margin-right: 20px;
@@ -304,3 +304,74 @@ h3,h4,h5,h6,p {
     justify-content: center;
     align-items: center;
   }
+ /* Fondo modal */
+.custom-modal-bg {
+  background-color: #333333;
+}
+
+/* Título */
+.custom-title {
+  color: #C3D4FF;
+}
+
+/* Etiquetas */
+.custom-label {
+  color: #E0E0E0;
+}
+
+/* Inputs y textarea */
+.custom-input {
+  background-color: #E0E0E0;
+  color: #333333;
+  border: none;
+}
+
+.custom-input:focus {
+  box-shadow: 0 0 0 0.2rem #A9C6FA;
+  border-color: #A9C6FA;
+}
+
+/* Botón principal */
+.custom-btn {
+  background-color: #C3D4FF;
+  color: #333333;
+  border: none;
+}
+
+.custom-btn:hover {
+  background-color: #A9C6FA;
+  color: #333333;
+}
+
+/* Línea divisoria */
+.custom-divider {
+  border-color: #A9C6FA;
+}
+/* 🎯 Backdrop con blur */
+.modal-backdrop.show {
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+}
+
+/* 💎 Estilo de glassmorphism para el modal */
+.modal-content {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* Opcional: estilo del modal al abrir con efecto scale */
+.modal.fade .modal-dialog {
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
+}
