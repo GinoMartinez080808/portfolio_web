@@ -11,20 +11,21 @@ import {
   OnDestroy,
   OnInit,
   DestroyRef,
-  effect
+  effect,
+  CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
 import { NgFor, NgIf, NgClass} from '@angular/common';
 import { TypewriterComponent } from '../components/typewriter/typewriter.component';
 
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TypewriterComponent, NgFor,NgClass],
+  imports: [TypewriterComponent, NgFor,NgClass, NgIf],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeComponent implements AfterViewInit {
   name: string = 'Gino Martínez';
@@ -32,6 +33,13 @@ export class HomeComponent implements AfterViewInit {
   phone: string = '+58 0412-2698503';
   address: string = 'Cabudare, Lara ,Venezuela';
 
+
+  images = [
+    'https://picsum.photos/id/1018/1000/600/',
+    'https://picsum.photos/id/1015/1000/600/',
+    'https://picsum.photos/id/1019/1000/600/'
+  ];
+ 
   proyectos = [
     {
       nombre: 'Al Cambio',
@@ -93,6 +101,16 @@ export class HomeComponent implements AfterViewInit {
  
 
     return this.showScrollButton();
+  }
+  isVisible = true;
+
+  constructor() {
+    this.checkScreenSize();
+    window.addEventListener('resize', () => this.checkScreenSize());
+  }
+
+  checkScreenSize() {
+    this.isVisible = window.innerWidth > 1198; 
   }
 }
   
