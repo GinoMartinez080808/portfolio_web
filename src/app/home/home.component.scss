@@ -350,6 +350,7 @@ h3,h4,h5,h6,p {
 /* 🎯 Backdrop con blur */
 .modal-backdrop.show {
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.2);
   transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
 }
