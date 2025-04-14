@@ -15,10 +15,13 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
+
 
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf, NgClass} from '@angular/common';
 import { TypewriterComponent } from '../components/typewriter/typewriter.component';
+
 
 
 @Component({
@@ -134,7 +137,7 @@ export class HomeComponent implements AfterViewInit {
   }
 
   onSubmit() {
-    this.loading = true;
+    this.loading = true; 
 
     const serviceID = 'service_aasdasdasdas';
     const templateID = "template_b4gjzee";
@@ -143,10 +146,64 @@ export class HomeComponent implements AfterViewInit {
     emailjs.send(serviceID, templateID, this.formData, publicKey)
       .then(() => {
      //   alert('Correo enviado con éxito');
+     Swal.fire({
+      title: '¡Mensaje enviado!',
+      text: 'Gracias por contactarme. Te responderé pronto.',
+      icon: 'success',
+      background: 'rgba(255, 255, 255, 0.1)',
+      color: '#fff',
+      iconColor: '#00c9a7',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#00c9a7',
+      backdrop: `
+        rgba(0, 0, 0, 0.4)
+        blur(10px)
+      `,
+      customClass: {
+        popup: 'custom-swal-popup',
+        confirmButton: 'custom-swal-button'
+      },
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    });
+    
         this.resetForm();
       })
       .catch((err) => {
        // alert('Error al enviar el correo: ' + err.text);
+       Swal.fire({
+        title: 'Error al enviar',
+        text: 'No se pudo enviar el mensaje. Inténtalo de nuevo más tarde.',
+        icon: 'error',
+        background: 'rgba(255, 255, 255, 0.1)',
+        color: '#fff',
+        iconColor: '#ff4d4f',
+        confirmButtonText: 'Reintentar' ,
+        confirmButtonColor: '#ff4d4f',
+        backdrop: `
+          rgba(0, 0, 0, 0.4)
+          blur(10px)
+        `,
+        customClass: {
+          popup: 'custom-swal-popup',
+          confirmButton: 'custom-swal-button'
+        },
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // 👇 Abres el modal si el usuario acepta
+          this.openModal();
+        }});
+      
         this.loading = false;
       });
   
