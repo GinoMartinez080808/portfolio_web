@@ -1,8 +1,56 @@
-<header></header>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MiPortafolio</a>
+  
+      <!-- Botón hamburguesa -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Menú colapsable -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" (click)="scrollToProyectos(this.presentacionRef)">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" (click)="scrollToProyectos(this.proyectosRef)">Proyectos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" (click)="scrollToProyectos(this.skillsRef)">Skills</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link active" (click)="scrollToProyectos(this.footerRef)">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
 
-<main #scrollContainer>
+
+
+</header> 
+
+<main #scrollContainer
+data-bs-spy="scroll" 
+data-bs-target="#navbarNav" 
+data-bs-offset="100" 
+class="scrollspy-example" 
+tabindex="0"
+>
   <div
     id="presentacion"
+    #presentacionRef
     class="section container text-center bg-dark mt-5 mb-5 rounded p-5 sh shadow"
   >
     <div id="typewriter">
@@ -20,7 +68,7 @@
         </p>
         <button
           class="btn btn-primary btn-lg mt-3"
-          (click)="scrollToProyectos()"
+          (click)="scrollToProyectos(this.proyectosRef)"
         >
           Ver proyectos
         </button>
@@ -30,6 +78,8 @@
 
   <section
     id="Skills"
+    #skillsRef
+
     class="section container text-center bg-dark mt-5 mb-5 rounded p-5 shadow sh"
   >
     <h1>Skills</h1>
@@ -583,7 +633,7 @@
     </swiper-container>
   </section>
 
-  <footer class="sh shadow bg-dark">
+  <footer id="footer" class="sh shadow bg-dark" #footerRef>
     <div id="contacto1">
       <h1>Contact me:</h1>
       <!-- Botón para abrir -->

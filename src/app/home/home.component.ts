@@ -72,8 +72,11 @@ export class HomeComponent implements AfterViewInit {
   ];
 
   @ViewChild('proyectosRef') proyectosRef!: ElementRef;
-  scrollToProyectos() {
-    this.proyectosRef.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  @ViewChild('footerRef') footerRef!: ElementRef;
+  @ViewChild('presentacionRef') presentacionRef!: ElementRef;
+  @ViewChild('skillsRef') skillsRef!: ElementRef;
+  scrollToProyectos(Ref: ElementRef) {
+    Ref.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }  
 
   // Señales

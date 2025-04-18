@@ -414,3 +414,19 @@ h3,h4,h5,h6,p {
   transform: scale(1.1);
   background: rgba(255, 255, 255, 0.2);
 }
+
+.navbar {
+  height: 5vh !important;
+  background: transparent !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0dcaf0 !important; // azul Bootstrap o personaliza
+}
